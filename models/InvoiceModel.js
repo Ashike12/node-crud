@@ -1,52 +1,55 @@
 const mongoose = require('mongoose')
 
-const productSchema = mongoose.Schema(
+const invoiceSchema = mongoose.Schema(
     {
-        Title: {
+        Identifier: {
             type: String,
-            required: [true, "Please enter a product name"]
+            required: [true]
         },
-        Code: {
+        CustomerName: {
             type: String,
             required: true,
             default: 0
         },
-        Price: {
-            type: Number,
+        CustomerAddress: {
+            type: String,
             required: true,
         },
-        Description: {
-            type: Array,
+        InvoiceDate: {
+            type: Date,
             required: false,
         },
-        QuantityInStock: {
+        InvoiceDeliveryDate: {
+            type: Date,
+            required: false,
+        },
+        TotalBill: {
             type: Number,
             required: true,
         },
-        TotalQuantity: {
+        BillPaymentAmount: {
             type: Number,
             required: true,
         },
-        TotalSold: {
+        BillDueAmount: {
             type: Number,
             required: true,
         },
-        Color: {
-            type: String,
+        TotalNumberOfProducts: {
+            type: Number,
             required: true,
         },
         Category: {
             type: String,
             required: true,
         },
-        Tags: {
-            type: Array,
-            required: false,
+        PdfFileId: {
+            type: String,
         }
     }
 )
 
 
-const Product = mongoose.model('Product', productSchema);
+const Product = mongoose.model('Invoice', invoiceSchema);
 
 module.exports = Product;
